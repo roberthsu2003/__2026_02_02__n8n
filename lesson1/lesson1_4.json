@@ -1,6 +1,17 @@
 {
   "nodes": [
     {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        -112
+      ],
+      "id": "0c3d16dd-3186-447c-88f5-e2f7f3fca80f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
       "parameters": {
         "url": "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json",
         "options": {}
@@ -86,14 +97,15 @@
         "name": "={{$now.format(\"yyyy-MM-dd_HH-mm-ss\")}}.xlsx",
         "driveId": {
           "__rl": true,
+          "value": "My Drive",
           "mode": "list",
-          "value": "My Drive"
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
         },
         "folderId": {
           "__rl": true,
-          "mode": "list",
-          "value": "root",
-          "cachedResultName": "/ (Root folder)"
+          "value": "=https://drive.google.com/drive/folders/1IfoDOU5oonoCRNW23LZzqPUR1qx6XJbp",
+          "mode": "url"
         },
         "options": {}
       },
@@ -107,13 +119,24 @@
       "name": "Upload file",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "wpB2oMnhHsSdebBC",
-          "name": "Google Drive localhost"
+          "id": "UuwAiNy1MABcXWLE",
+          "name": "Google Drive account"
         }
       }
     }
   ],
   "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "youbikeAPI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "youbikeAPI": {
       "main": [
         [
