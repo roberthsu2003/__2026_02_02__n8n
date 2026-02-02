@@ -1,0 +1,152 @@
+{
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        -96
+      ],
+      "id": "67733bd3-93f3-4403-aa06-b6b6991406c5",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "getAllPeople"
+      },
+      "type": "n8n-nodes-base.n8nTrainingCustomerDatastore",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -96
+      ],
+      "id": "d27e02d0-58a3-402e-8b2e-c0132099d3b8",
+      "name": "n8n提供的內建資料"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "76a1122e-26e0-4e00-915c-0474e9de8164",
+              "name": "編號",
+              "value": "={{ $json.id }}",
+              "type": "number"
+            },
+            {
+              "id": "48cdf2ca-bc72-4804-a207-5c6e5b42d1e9",
+              "name": "姓名",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "d3ee72f0-7a01-4776-9cde-6794c03bb3e6",
+              "name": "郵件",
+              "value": "={{ $json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "cc10c2ec-161c-4d1e-9ce0-cb27d961596c",
+              "name": "建立日期",
+              "value": "={{ $json.created }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        256,
+        -96
+      ],
+      "id": "8f99e22c-169a-4e74-97ae-48a661fe42f9",
+      "name": "過濾資料"
+    },
+    {
+      "parameters": {
+        "content": "### 這是第2個節點\n- 第1點\n- 第2點\n- 第3點\n- 第4點\n",
+        "height": 464
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -16,
+        -272
+      ],
+      "typeVersion": 1,
+      "id": "7beec2fb-9cb8-4f6e-94af-112630d75145",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# 這是第一個範例",
+        "height": 80,
+        "width": 320,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -416,
+        -256
+      ],
+      "typeVersion": 1,
+      "id": "b3ef2c50-d18a-41b4-89ce-5481a71be250",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "customerId": "客戶資訊",
+        "message": "=客戶資訊:\n編號:{{ $json.編號 }}\n姓名:{{ $json['姓名'] }}\n郵件:{{ $json['郵件'] }}\n日期:{{ $json['建立日期'] }}"
+      },
+      "type": "n8n-nodes-base.n8nTrainingCustomerMessenger",
+      "typeVersion": 1,
+      "position": [
+        464,
+        -96
+      ],
+      "id": "d547b6e5-5633-4d93-a771-6f0a4344eed2",
+      "name": "display"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "n8n提供的內建資料",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n提供的內建資料": {
+      "main": [
+        [
+          {
+            "node": "過濾資料",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "過濾資料": {
+      "main": [
+        [
+          {
+            "node": "display",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "d135f5bcfa8bdece905b6d778df94a7be68624c12d1878e14ba64eeb17a04d82"
+  }
+}
