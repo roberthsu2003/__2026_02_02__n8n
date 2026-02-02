@@ -3,3 +3,9 @@ n8n課程
 
 ## 上課網址
 https://meet.google.com/ojy-ptah-pac
+
+
+
+## ollama下載位置
+
+https://ollama.com/
