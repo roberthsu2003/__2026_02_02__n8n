@@ -8,3 +8,9 @@ https://www.youtube.com/watch?v=liwCrZ23eEE
 https://www.youtube.com/watch?v=SCTfcOnNzCk
 
 ---
+
+## 2026_02_03_早上
+
+https://www.youtube.com/watch?v=VsghOmgJn5A
+
+---
