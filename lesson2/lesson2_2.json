@@ -1,0 +1,99 @@
+{
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        -176
+      ],
+      "id": "db68f15e-c985-431f-abf7-c2c8291c43c4",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "returnAll": true,
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1IfoDOU5oonoCRNW23LZzqPUR1qx6XJbp",
+            "mode": "list",
+            "cachedResultName": "n8n_LTRi",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1IfoDOU5oonoCRNW23LZzqPUR1qx6XJbp"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -128,
+        -176
+      ],
+      "id": "1cf043e8-e1b1-4ee2-b1ee-7f144351964c",
+      "name": "搜尋資料夾",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "UuwAiNy1MABcXWLE",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        80,
+        -176
+      ],
+      "id": "e7255f45-f44a-44f2-95d9-71394af773a3",
+      "name": "下載檔案",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "UuwAiNy1MABcXWLE",
+          "name": "Google Drive account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "搜尋資料夾",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "搜尋資料夾": {
+      "main": [
+        [
+          {
+            "node": "下載檔案",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d135f5bcfa8bdece905b6d778df94a7be68624c12d1878e14ba64eeb17a04d82"
+  }
+}
